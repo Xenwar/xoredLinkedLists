@@ -68,7 +68,6 @@ int main() {
   nodes[4].value = 7;
 
   // Test
-  // graziano@synack.com
   result = findNode(head, 3);
   //assert that result = &node[0];
   result = findNode(head, 8);
