@@ -1,0 +1,77 @@
+
+//—————————————
+#include <stdio.h>
+// XOR linked list
+// single field: x. Value+ xor of prev and next
+/*
+ *  /> head
+ * [A] < -- > [B] < -- > [C]
+ *
+ *    (prev)^(next)
+ * B.x = &A ^ &C;
+ * A.x = NULL ^ B;
+ * C.x = B ^ NULL; // prev = B
+ * node.x = prev ^ next;
+ * how do we get 'next' alone?
+  * node.x = prev ^ next ^ prev; => next
+ */
+typedef struct Node_t {
+  void *x; // This is the xor of the address of the previous node and the next node
+  int value;
+} Node;
+Node * findNode(const Node* head, int v)
+{
+
+  Node *prev = NULL;
+  Node *current = head;
+  Node *next = NULL;
+
+  while(head->x != NULL){ // Check if at end of list
+    if(current->value == v)
+      return current; // Found a match
+    else
+    {
+      // Advance current to next
+      next = current->x ^ current;
+      // ^ This is equivalent to B = A.x ^A;
+      current = next; // Advance
+    }
+  }//end of while.
+  return current;
+}
+
+int main() {
+
+  //Testing
+  //1. empty list
+  //2. a single element.
+  //3.
+
+  //
+  Node *result;
+  Node nodes[5];
+  Node *head;
+  head = &nodes[0];
+
+  // Link up the nodes
+  head->x = (void*)&nodes[3];
+  nodes[3].x = (void*)head ^ (void*)&nodes[4];
+  nodes[3].x = head ^ &nodes[4];
+  nodes[4].x = (void*)(&nodes[3] ^ &nodes[1]);
+  nodes[1].x = &nodes[4];
+
+  // Give them values
+  nodes[0].value = 3;
+  nodes[1].value = 8;
+  nodes[2].value = 5;
+  nodes[3].value = 1;
+  nodes[4].value = 7;
+
+  // Test
+  // graziano@synack.com
+  result = findNode(head, 3);
+  //assert that result = &node[0];
+  result = findNode(head, 8);
+  //assert that result = &node[1];
+  return 0;
+}
