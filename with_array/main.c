@@ -64,7 +64,7 @@ int main() {
    //i chosen on purpose for validation.
    //possible to add random numbers.
 }//end of adding values.
-  // graziano@synack.com
+  
   //Even indexes, values not to be found.
   //Odd indexes, values to be found.
   int lookup[] = {10,1,20,3,40};
