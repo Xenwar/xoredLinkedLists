@@ -1,7 +1,6 @@
 # xoredLinkedLists
-This project tries to solve a xored linked list problem. 
-The first part solves specific task, searching. The second part solves
-more generic problem, building the next pointer and comparing it with reference values. 
+The first part solves specific task, searching. 
+The second part solves more generic problem, building the next pointer and comparing it with reference values. 
 i.e. Searching is a specific problem of calculating pointers. 
 
 As discussed above, the are two versions. 
